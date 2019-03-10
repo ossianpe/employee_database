@@ -1,4 +1,4 @@
-default['employee_database']['database']['mysql']['database_path'] = '/home/mysql'
+default['employee_database']['database']['mysql']['database_path'] = '/home/mysql/test_db'
 default['employee_database']['database']['mysql']['database_name'] = 'employee_db'
 default['employee_database']['database']['mysql']['local_username'] = 'root'
 default['employee_database']['database']['mysql']['local_password'] = 'gjh6fk8f'

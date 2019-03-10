@@ -18,7 +18,7 @@ mysql_service database_name do
     port '3306'
     version '5.7'
     initial_root_password local_mysql_password
-    mysqld_options({ 'secure-file-priv' => test_db_path })
+    mysqld_options({ 'secure-file-priv' => '/usr/local/share' })
     action [:create, :start]
 end
 
@@ -36,7 +36,7 @@ git test_db_path do
     action :sync
 end
 
-directory test_db_path do
+directory '/home/mysql' do
     owner 'mysql'
     group 'mysql'
     recursive true
@@ -47,7 +47,7 @@ execute 'load test_db in mysql' do
     command <<-"EOF"
         cd #{test_db_path} && \
             #{init_connection} \
-            < #{test_db_path}/test_db/employees.sql
+            < #{test_db_path}/employees.sql
     EOF
     user 'root'
     action :run
