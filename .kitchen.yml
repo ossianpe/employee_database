@@ -1,0 +1,40 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: database
+    driver_config:
+      vm_hostname: database.chef-server.com
+      network:
+      - ["private_network", {ip: "192.168.0.10"}]
+    run_list:
+      - role[database]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
+  - name: app
+    driver_config:
+      vm_hostname: app.chef-server.com
+      network:
+      - ["private_network", {ip: "192.168.0.11"}]
+    run_list:
+      - role[app]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
