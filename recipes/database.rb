@@ -4,6 +4,7 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
+local_mysql_path = node['employee_database']['database']['mysql']['home_path']
 local_mysql_user = node['employee_database']['database']['mysql']['local_username']
 local_mysql_password = node['employee_database']['database']['mysql']['local_password']
 test_db_path = node['employee_database']['database']['mysql']['database_path']
@@ -18,7 +19,6 @@ mysql_service database_name do
     port '3306'
     version '5.7'
     initial_root_password local_mysql_password
-    mysqld_options({ 'secure-file-priv' => '/usr/local/share' })
     action [:create, :start]
 end
 
@@ -36,7 +36,7 @@ git test_db_path do
     action :sync
 end
 
-directory '/home/mysql' do
+directory local_mysql_path do
     owner 'mysql'
     group 'mysql'
     recursive true
@@ -65,7 +65,6 @@ execute 'set remote mysql privileges' do
     user 'root'
     action :run
 end
-
 
 # mysql_config "security settings for #{database_name}" do
 #     config_name 'security'

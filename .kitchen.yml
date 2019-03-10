@@ -26,10 +26,9 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/default
-    attributes:
-  - name: app
+  - name: app-1
     driver_config:
-      vm_hostname: app.chef-server.com
+      vm_hostname: app-1.chef-server.com
       network:
       - ["private_network", {ip: "192.168.0.11"}]
     run_list:
@@ -37,4 +36,23 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/default
-    attributes:
+  - name: app-2
+    driver_config:
+      vm_hostname: app-2.chef-server.com
+      network:
+      - ["private_network", {ip: "192.168.0.12"}]
+    run_list:
+      - role[app]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+  - name: lb
+    driver_config:
+      vm_hostname: lb.chef-server.com
+      network:
+      - ["private_network", {ip: "192.168.0.15"}]
+    run_list:
+      - role[lb]
+    verifier:
+      inspec_tests:
+        - test/integration/default

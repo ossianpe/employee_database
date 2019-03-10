@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DK.. Donkey Kong</title>
+<title>Employees</title>
 <style>
     body {
         width: 35em;
@@ -11,10 +11,10 @@
 </style>
 </head>
 <body>
-<h1>King K. Rool</h1>
-<p>Hold on to your banana. This is gonna put hair on your chest...and maybe even your back. It's <b>Donkey Kong Country</b>.</p>
-<img src="KroolCountry.png" alt="King K. Rool">
-
+<h1>Query results</h1>
+<p>Filtered by male, birth date is 1965-02-01, and hire date is greater than 1990-01-01</p>
+<iframe src="<%= @query_file %>" width="100%" class="myIframe">
+</iframe>
 <p><em>Hosted on <%= @servername %>.</em></p>
 </body>
 </html>
