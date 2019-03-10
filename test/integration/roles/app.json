@@ -1,0 +1,11 @@
+{
+    "name":         "app",
+    "description":  "Deploys web node for employee_database",
+    "json_class":   "Chef::Role",
+    "chef_type":    "role",
+    "run_list": [
+        "recipe[apt::default]",
+        "recipe[nginx::default]",
+        "recipe[employee_database::app]"
+    ]
+}
