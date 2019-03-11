@@ -25,7 +25,7 @@ suites:
       - role[database]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/default/database_test.rb
   - name: app-1
     driver_config:
       vm_hostname: app-1.chef-server.com

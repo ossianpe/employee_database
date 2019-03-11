@@ -13,6 +13,10 @@ module EmployeeDatabase
                 --user=#{remote_mysql_usr} \
                 --password=#{remote_mysql_pw}"
         end
+
+        def endpoint_search(node, query)
+            search(:node, "(#{query}) AND chef_environment:#{node.chef_environment}")
+        end
     end
 end
 

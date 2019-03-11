@@ -5,7 +5,13 @@
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 unused_configs=node['employee_database']['lb']['config_to_remove']
-app_nodes=node['employee_database']['lb']['app_nodes']
+app_node_list=[]
+
+# Determine all app nodes to add to nginx configuration
+discovered_nodes=endpoint_search(node, 'role:app')
+discovered_nodes.each do |app_node|
+  app_node_list.push(app_node.attributes['ipaddress'])
+end
 
 unused_configs.each do |configs|
   file configs do
@@ -19,6 +25,6 @@ template 'load-balancer.conf' do
   notifies :reload, 'service[nginx]', :delayed
   mode '0644'
   variables({
-    app_nodes: node['employee_database']['lb']['app_nodes']
+    app_nodes: app_node_list
   })
 end

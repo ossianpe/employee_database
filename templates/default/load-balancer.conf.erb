@@ -3,7 +3,7 @@
 # You can find the private IPs at your UpCloud Control Panel Network section.
 
 upstream backend {
-   <% node['employee_database']['lb']['app_nodes'].each do |app_node| -%>
+   <% @app_nodes.each do |app_node| -%>
    server <%= app_node %>;
    <% end -%>
 }

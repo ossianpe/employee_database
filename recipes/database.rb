@@ -65,12 +65,3 @@ execute 'set remote mysql privileges' do
     user 'root'
     action :run
 end
-
-# mysql_config "security settings for #{database_name}" do
-#     config_name 'security'
-#     instance database_name
-#     source 'security.cnf.erb'
-#     variables(:secure-file-priv => '')
-#     action :create
-#     notifies :restart, "mysql_service[#{database_name}]"
-# end
