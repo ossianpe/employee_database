@@ -4,9 +4,10 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
-db_host='192.168.0.10'
-remote_mysql_user=node['employee_database']['database']['mysql']['remote_username']
-remote_mysql_password=node['employee_database']['database']['mysql']['remote_password']
+db_host_node=endpoint_search(node, 'role:database')
+db_host=db_host_node[0].attributes['ipaddress']
+remote_mysql_user=data_bag_item('mysql', 'remote_user')['user']
+remote_mysql_password=data_bag_item('mysql', 'remote_user')['password']
 query_output_file=node['employee_database']['database']['mysql']['query_output_file']
 nginx_web_hosting_path='/usr/share/nginx/html/'
 

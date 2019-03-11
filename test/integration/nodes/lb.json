@@ -1,0 +1,7 @@
+{
+    "id": "lb",
+    "run_list": ["role[lb]"],
+    "automatic": {
+      "ipaddress": "192.168.0.15"
+    }
+}

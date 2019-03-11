@@ -5,12 +5,12 @@
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 local_mysql_path = node['employee_database']['database']['mysql']['home_path']
-local_mysql_user = node['employee_database']['database']['mysql']['local_username']
-local_mysql_password = node['employee_database']['database']['mysql']['local_password']
+local_mysql_user = data_bag_item('mysql', 'local_user')['user']
+local_mysql_password = data_bag_item('mysql', 'local_user')['password']
 test_db_path = node['employee_database']['database']['mysql']['database_path']
 database_name = node['employee_database']['database']['mysql']['database_name']
-remote_mysql_user = node['employee_database']['database']['mysql']['remote_username']
-remote_mysql_pass = node['employee_database']['database']['mysql']['remote_password']
+remote_mysql_user = data_bag_item('mysql', 'remote_user')['user']
+remote_mysql_pass = data_bag_item('mysql', 'remote_user')['password']
 
 # Build cmd for connecting to mysql shell
 init_connection=init_mysql_connection(database_name, local_mysql_user, local_mysql_password)

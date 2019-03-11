@@ -1,0 +1,7 @@
+{
+    "id": "database",
+    "run_list": ["role[database]"],
+    "automatic": {
+      "ipaddress": "192.168.0.10"
+    }
+}

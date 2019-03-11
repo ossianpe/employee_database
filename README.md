@@ -25,24 +25,24 @@ Install [`kitchen-vagrant`]:
 ## Utilizing `Test Kitchen`
 ## Running
 
-1.) Set local shell to use `chef_shell`:
+1) Set local shell to use `chef_shell`:
     `eval "$(chef shell-init bash)"`
 
-1.) Run `Test Kitchen` setup with:
+1) Run `Test Kitchen` setup with:
     `kitchen converge`
 
-1.) Wait for infrastructure to be built.
+1) Wait for infrastructure to be built.
 
-1.) Once the infrastructure is built, view load balancer at [`192.168.0.15`](http://192.168.0.15)
+1) Once the infrastructure is built, view load balancer at [`192.168.0.15`](http://192.168.0.15)
 
 ### Testing
 
-1.) In order to run tests, run the following:
-    `kitchen verify <suite_name>`
-    _where <suite_name> is the name of the node_
+In order to run tests, run the following:
+`kitchen verify <suite_name>`
+_where <suite_name> is the name of the node_
 
-    For example:
-    `kitchen verify database`
+For example:
+`kitchen verify database`
 
 ### Clean up
 
