@@ -35,7 +35,7 @@ suites:
       - role[app]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/default/app_test.rb
   - name: app-2
     driver_config:
       vm_hostname: app-2.chef-server.com
@@ -45,7 +45,7 @@ suites:
       - role[app]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/default/app_test.rb
   - name: lb
     driver_config:
       vm_hostname: lb.chef-server.com
@@ -55,4 +55,4 @@ suites:
       - role[lb]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/default/lb_test.rb
